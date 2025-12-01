@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+docker build --tag=neovim . &&\
+  docker run \
+    --interactive \
+    --privileged \
+    --tty \
+    --mount type=bind,source="$(pwd)",target=/root/.config/nvim/ \
+    neovim
