@@ -17,3 +17,8 @@ source $ZSH/oh-my-zsh.sh
 
 . $HOME/.asdf/asdf.sh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
+
