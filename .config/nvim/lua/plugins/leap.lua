@@ -11,7 +11,7 @@ local M = {
 }
 
 function M.init()
-	vim.keymap.set({ "n", "v" }, "f", "<PLug>(leap)", { desc = "Leap" })
+	vim.keymap.set({ "n", "v" }, "s", "<PLug>(leap)", { desc = "Leap" })
 end
 
 return M

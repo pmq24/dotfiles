@@ -1,19 +1,16 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-	cmd = { "Telescope" },
+	event = "VeryLazy",
 	dependencies = {
-		"folke/which-key.nvim",
 		"neovim/nvim-lspconfig",
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-fzf-native.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
 	},
 	main = "telescope",
-	keys = { "<A-d>", "<A-b>", "<A-f>", "<A-w>" },
 	opts = function()
 		local lga = require("telescope-live-grep-args.actions")
 

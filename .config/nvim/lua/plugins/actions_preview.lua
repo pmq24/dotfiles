@@ -1,6 +1,6 @@
 local M = {
 	"aznhe21/actions-preview.nvim",
-	event = { "BufReadPost" },
+	event = "VeryLazy",
 	main = "actions-preview",
 	opts = {},
 }

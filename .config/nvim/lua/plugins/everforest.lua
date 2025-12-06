@@ -2,7 +2,7 @@ local M = {
 	"neanias/everforest-nvim",
 	event = "VeryLazy",
 	main = "everforest",
-	name = "(Colorscheme) Everforest",
+	name = "everforest: 🌲 Comfortable & Pleasant Color Scheme for Vim",
 }
 
 return M
