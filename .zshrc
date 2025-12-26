@@ -1,4 +1,5 @@
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.local/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -11,14 +12,9 @@ plugins=(
 
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=${ASDF_DATA_DIR:-$HOME/.asdf}/completions
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-. $HOME/.asdf/asdf.sh
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-. ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
-

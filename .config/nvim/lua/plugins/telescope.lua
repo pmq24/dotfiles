@@ -55,20 +55,24 @@ function M.config(spec, opts)
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("ui-select")
 
-	vim.keymap.set("n", "<A-b>", ":Telescope buffers<CR>", { desc = " Telescope: buffers" })
-	vim.keymap.set("n", "<A-c>", ":Telescope resume<CR>", { desc = " Telescope: continue previous search" })
-	vim.keymap.set("n", "<A-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: definitions" })
-	vim.keymap.set("n", "<A-S-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: type definitions" })
-	vim.keymap.set("n", "<A-f>", ":Telescope find_files<CR>", { desc = " Telescope: files" })
+	vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = " Telescope: buffers" })
+	vim.keymap.set("n", "<leader>c", ":Telescope resume<CR>", { desc = " Telescope: continue previous search" })
+	vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { desc = " Telescope: files" })
+	vim.keymap.set("v", "<leader>f", "y<ESC>:Telescope find_files default_text=<c-r>0<CR>", { desc = "Telescope: files - with current selection" })
 	vim.keymap.set(
 		"n",
-		"<A-r>",
+		"<leader>r",
 		":Telescope lsp_references show_line=false<CR>",
 		{ desc = " Telescope: references" }
 	)
-	vim.keymap.set("n", "<A-w>", function()
+	vim.keymap.set("n", "<leader>w", function()
 		telescope.extensions.live_grep_args.live_grep_args()
 	end, { desc = " Telescope: words" })
+	vim.keymap.set("v", "<leader>w", function()
+		vim.cmd('normal! y')
+		local text = vim.fn.getreg('"')
+		telescope.extensions.live_grep_args.live_grep_args({ default_text = text })
+	end, { desc = "Telescope: words - with current selection" })
 end
 
 return M
