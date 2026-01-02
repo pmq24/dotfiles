@@ -65,6 +65,7 @@ function M.config(spec, opts)
 		":Telescope lsp_references show_line=false<CR>",
 		{ desc = " Telescope: references" }
 	)
+	vim.keymap.set("n", "<leader>d", ":Telescope lsp_definitions<CR>", { desc = " Telescope: definitions" })
 	vim.keymap.set("n", "<leader>w", function()
 		telescope.extensions.live_grep_args.live_grep_args()
 	end, { desc = " Telescope: words" })

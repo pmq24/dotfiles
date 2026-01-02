@@ -7,11 +7,11 @@ local M = {
 }
 
 function M.init()
-	vim.keymap.set("n", "<leader>ra", ":A<CR>")
-	vim.keymap.set("n", "<leader>rr", ":R<CR>")
+	vim.keymap.set("n", "<leader>ra", ":A<CR>zz")
+	vim.keymap.set("n", "<leader>rr", ":R<CR>zz")
 
-	vim.keymap.set("n", "<leader>rv", ":Eview<CR>")
-	vim.keymap.set("n", "<leader>rc", ":Econtroller<CR>")
+	vim.keymap.set("n", "<leader>rv", ":Eview<CR>zz")
+	vim.keymap.set("n", "<leader>rc", ":Econtroller<CR>zz")
 end
 
 return M
