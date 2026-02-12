@@ -5,12 +5,10 @@ local LANGUAGE_SERVERS = {
 	"gopls",
 	"html",
 	"jsonls",
-	"lua_ls",
 	"rubocop",
 	"ruby_lsp",
 	"tailwindcss",
-	"ts_ls",
-	"volar",
+	"vue_ls",
 	"yamlls",
 }
 
@@ -50,6 +48,11 @@ function M.config()
 	vim.lsp.config(
 		"ts_ls",
 		{
+			capabilities = capabilities,
+			filetypes = { "typescript", "vue" },
+			on_attach = function()
+				vim.lsp.enable({"vue_ls"})
+			end,
 			init_options = {
 				plugins = {
 					{
@@ -57,7 +60,7 @@ function M.config()
 						location = vim.fn.expand("$MASON/packages")
 							.. "/vue-language-server"
 							.. "/node_modules/@vue/language-server",
-						languages = { "vue" },
+						languages = { "typescript", "vue" },
 					},
 				},
 			},

@@ -1,5 +1,8 @@
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.local/bin:$PATH"
+PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin/nvim/bin:$PATH"
+export PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 
