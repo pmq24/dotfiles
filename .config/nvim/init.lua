@@ -61,3 +61,5 @@ vim.keymap.set("n", "q", function()
 	end
 	vim.cmd("bdelete")
 end, { desc = "󰅖 Quit the current buffer" })
+
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
