@@ -37,3 +37,9 @@ export EDITOR=nvim
 autoload -Uz edit-commamnd-line
 zle -N edit-command-line
 bindkey '^X^e' edit-command-line
+
+# Keybinds
+
+alias lg=lazygit
+alias nv=nvim
+alias q=exit
