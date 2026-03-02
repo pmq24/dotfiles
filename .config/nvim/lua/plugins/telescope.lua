@@ -50,6 +50,8 @@ local M = {
 
 function M.config(spec, opts)
 	local telescope = require(spec.main)
+	local telescope_builtin = require('telescope.builtin')
+
 	telescope.setup(opts)
 	telescope.load_extension("fzf")
 	telescope.load_extension("live_grep_args")
@@ -57,8 +59,21 @@ function M.config(spec, opts)
 
 	vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = " Telescope: buffers" })
 	vim.keymap.set("n", "<leader>c", ":Telescope resume<CR>", { desc = " Telescope: continue previous search" })
+
 	vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { desc = " Telescope: files" })
 	vim.keymap.set("v", "<leader>f", "y<ESC>:Telescope find_files default_text=<c-r>0<CR>", { desc = "Telescope: files - with current selection" })
+	vim.keymap.set(
+		"n",
+		"<leader>F",
+		function()
+			copied_text = vim.fn.getreg("+")
+			if copied_text == "" then return end
+
+			telescope_builtin.find_files({ default_text = copied_text })
+		end,
+		{ desc = " Telescope: grep" }
+	)
+
 	vim.keymap.set(
 		"n",
 		"<leader>r",
@@ -66,6 +81,7 @@ function M.config(spec, opts)
 		{ desc = " Telescope: references" }
 	)
 	vim.keymap.set("n", "<leader>d", ":Telescope lsp_definitions<CR>", { desc = " Telescope: definitions" })
+
 	vim.keymap.set("n", "<leader>w", function()
 		telescope.extensions.live_grep_args.live_grep_args()
 	end, { desc = " Telescope: words" })
@@ -74,6 +90,17 @@ function M.config(spec, opts)
 		local text = vim.fn.getreg('"')
 		telescope.extensions.live_grep_args.live_grep_args({ default_text = text })
 	end, { desc = "Telescope: words - with current selection" })
+	vim.keymap.set(
+		"n",
+		"<leader>W",
+		function()
+			copied_text = vim.fn.getreg("+")
+			if copied_text == "" then return end
+
+			telescope.extensions.live_grep_args.live_grep_args({ default_text = copied_text })
+		end,
+		{ desc = " Telescope: words - with clipboard" }
+	)
 end
 
 return M
