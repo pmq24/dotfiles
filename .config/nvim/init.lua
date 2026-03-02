@@ -36,7 +36,7 @@ require("lazy").setup("plugins", {
 vim.cmd.colorscheme("everforest")
 
 -- Keymaps
-vim.keymap.set("n", "<A-C-S-q>", function()
+vim.keymap.set("n", "qqq", function()
 	vim.cmd("wqa!")
 end, { desc = "Save all files and quit Neovim" })
 
